@@ -4,7 +4,7 @@
 
 > Minimal TeX Live image for Japanese based on alpine
 
-Forked from [umireon/docker-texci] (under the MIT License).
+Forked from [umireon/docker-texci] \(under the MIT License\).
 
 [umireon/docker-texci]: https://github.com/umireon/docker-texci
 
