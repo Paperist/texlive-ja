@@ -1,6 +1,8 @@
 # 3846masa/alpine-texlive-ja
 
-[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+[![Docker Automated buil](https://img.shields.io/docker/automated/3846masa/alpine-texlive-ja.svg)](https://hub.docker.com/r/3846masa/alpine-texlive-ja/)
+[![Docker Image Size](https://images.microbadger.com/badges/image/3846masa/alpine-texlive-ja.svg)](https://microbadger.com/images/3846masa/alpine-texlive-ja "Get your own image badge on microbadger.com")
+[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg)](https://github.com/RichardLitt/standard-readme)
 
 > Minimal TeX Live image for Japanese based on alpine
 
