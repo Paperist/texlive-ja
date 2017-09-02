@@ -21,7 +21,8 @@ RUN apk --no-cache add perl wget xz tar fontconfig-dev && \
     /tmp/install-tl-unx/install-tl \
       --profile=/tmp/install-tl-unx/texlive.profile && \
     tlmgr install \
-      collection-basic collection-latex collection-latexrecommended \
+      collection-basic collection-latex \
+      collection-latexrecommended collection-latexextra \
       collection-fontsrecommended collection-langjapanese latexmk && \
     ( tlmgr install xetex || exit 0 ) && \
     rm -fr /tmp/install-tl-unx && \
