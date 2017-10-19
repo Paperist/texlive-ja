@@ -23,7 +23,8 @@ RUN apk --no-cache add perl wget xz tar fontconfig-dev && \
     tlmgr install \
       collection-basic collection-latex \
       collection-latexrecommended collection-latexextra \
-      collection-fontsrecommended collection-langjapanese latexmk && \
+      collection-fontsrecommended collection-fontsextra \
+      collection-langjapanese latexmk && \
     ( tlmgr install xetex || exit 0 ) && \
     rm -fr /tmp/install-tl-unx && \
     apk --no-cache del xz tar fontconfig-dev
