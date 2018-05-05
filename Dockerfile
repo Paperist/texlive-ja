@@ -1,5 +1,5 @@
 # Copyright (c) 2016 Kaito Udagawa
-# Copyright (c) 2016-2017 3846masa
+# Copyright (c) 2016-2018 3846masa
 # Released under the MIT license
 # https://opensource.org/licenses/MIT
 
