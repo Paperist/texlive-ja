@@ -9,7 +9,7 @@ MAINTAINER 3846masa
 
 ENV PATH /usr/local/texlive/2018/bin/x86_64-linuxmusl:$PATH
 
-RUN apk --no-cache add perl wget xz tar fontconfig-dev && \
+RUN apk --no-cache add perl wget xz tar fontconfig-dev freetype-dev && \
     mkdir /tmp/install-tl-unx && \
     wget -qO - ftp://tug.org/historic/systems/texlive/2018/install-tl-unx.tar.gz | \
     tar -xz -C /tmp/install-tl-unx --strip-components=1 && \
@@ -23,10 +23,10 @@ RUN apk --no-cache add perl wget xz tar fontconfig-dev && \
     tlmgr install \
       collection-basic collection-latex \
       collection-latexrecommended collection-latexextra \
-      collection-fontsrecommended collection-langjapanese latexmk && \
-    ( tlmgr install xetex || exit 0 ) && \
+      collection-fontsrecommended collection-langjapanese \
+      latexmk xetex && \
     rm -fr /tmp/install-tl-unx && \
-    apk --no-cache del xz tar fontconfig-dev
+    apk --no-cache del xz tar
 
 RUN apk --no-cache add bash
 
