@@ -28,7 +28,7 @@ RUN apk --no-cache add perl wget xz tar fontconfig-dev freetype-dev && \
     rm -fr /tmp/install-tl-unx && \
     apk --no-cache del xz tar
 
-RUN apk --no-cache add bash
+RUN apk --no-cache add bash ghostscript
 
 RUN mkdir /workdir
 
