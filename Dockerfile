@@ -30,8 +30,6 @@ RUN apk --no-cache add perl wget xz tar fontconfig-dev freetype-dev && \
 
 RUN apk --no-cache add bash
 
-RUN mkdir /workdir
-
 WORKDIR /workdir
 
 VOLUME ["/workdir"]
