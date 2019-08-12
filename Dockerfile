@@ -3,11 +3,12 @@
 # Released under the MIT license
 # https://opensource.org/licenses/MIT
 
-FROM frolvlad/alpine-glibc
+FROM frolvlad/alpine-glibc:latest
 
 ENV PATH /usr/local/texlive/2019/bin/x86_64-linux:$PATH
 
-RUN apk --no-cache add perl wget xz tar fontconfig-dev freetype-dev && \
+RUN apk add --no-cache perl fontconfig-dev freetype-dev && \
+    apk add --no-cache --virtual .fetch-deps wget xz tar && \
     mkdir /tmp/install-tl-unx && \
     wget -qO - ftp://tug.org/historic/systems/texlive/2019/install-tl-unx.tar.gz | \
     tar -xz -C /tmp/install-tl-unx --strip-components=1 && \
@@ -22,15 +23,10 @@ RUN apk --no-cache add perl wget xz tar fontconfig-dev freetype-dev && \
       collection-basic collection-latex \
       collection-latexrecommended collection-latexextra \
       collection-fontsrecommended collection-langjapanese \
-      latexmk && \
-    (tlmgr install xetex || exit 0) && \
+      latexmk dvipdfmx && \
     rm -fr /tmp/install-tl-unx && \
-    apk --no-cache del xz tar
-
-RUN apk --no-cache add bash
+    apk del .fetch-deps
 
 WORKDIR /workdir
 
-VOLUME ["/workdir"]
-
-CMD ["bash"]
+CMD ["sh"]
