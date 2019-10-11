@@ -14,16 +14,15 @@ RUN apk add --no-cache perl fontconfig-dev freetype-dev && \
     tar -xz -C /tmp/install-tl-unx --strip-components=1 && \
     printf "%s\n" \
       "selected_scheme scheme-basic" \
-      "option_doc 0" \
-      "option_src 0" \
+      "tlpdbopt_install_docfiles 0" \
+      "tlpdbopt_install_srcfiles 0" \
       > /tmp/install-tl-unx/texlive.profile && \
     /tmp/install-tl-unx/install-tl \
       --profile=/tmp/install-tl-unx/texlive.profile && \
     tlmgr install \
-      collection-basic collection-latex \
       collection-latexrecommended collection-latexextra \
       collection-fontsrecommended collection-langjapanese \
-      latexmk dvipdfmx && \
+      latexmk && \
     rm -fr /tmp/install-tl-unx && \
     apk del .fetch-deps
 
