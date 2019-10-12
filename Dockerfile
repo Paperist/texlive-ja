@@ -20,8 +20,9 @@ RUN apk add --no-cache perl fontconfig-dev freetype-dev && \
     /tmp/install-tl-unx/install-tl \
       --profile=/tmp/install-tl-unx/texlive.profile && \
     tlmgr install \
-      collection-latexrecommended collection-latexextra \
-      collection-fontsrecommended collection-langjapanese \
+      collection-latexextra \
+      collection-fontsrecommended \
+      collection-langjapanese \
       latexmk && \
     rm -fr /tmp/install-tl-unx && \
     apk del .fetch-deps
