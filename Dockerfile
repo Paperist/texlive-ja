@@ -1,5 +1,6 @@
 # Copyright (c) 2016 Kaito Udagawa
 # Copyright (c) 2016-2019 3846masa
+# Copyright (c) 2020 ARA Toshiaki
 # Released under the MIT license
 # https://opensource.org/licenses/MIT
 
