@@ -6,7 +6,7 @@
 
 FROM frolvlad/alpine-glibc:latest
 
-ENV PATH /usr/local/texlive/2020/bin/x86_64-linux:$PATH
+ENV PATH /usr/local/texlive/2020/bin/x86_64-linuxmusl:$PATH
 
 RUN apk add --no-cache curl perl fontconfig-dev freetype-dev && \
     apk add --no-cache --virtual .fetch-deps xz tar && \
