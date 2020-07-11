@@ -1,6 +1,7 @@
 # pman0214/alpine-texlive-ja-epspdf
 
-[![Docker Build](https://img.shields.io/docker/automated/pman0214/alpine-texlive-ja-epspdf.svg)](https://hub.docker.com/r/pman0214/alpine-texlive-ja-epspdf/)
+[![Docker Build](https://img.shields.io/docker/cloud/automated/pman0214/gatsbyjs-alpine.svg)](https://hub.docker.com/r/pman0214/alpine-texlive-ja-epspdf/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > Minimal Japanese TeX Live image based on alpine with epstopdf support for pdflatex
 
@@ -23,14 +24,15 @@ docker pull pman0214/alpine-texlive-ja-epspdf
 
 ## Usage
 
+Default ``WORKDIR`` is ``/workdir``.
+
 ```bash
-$ docker run --rm -it -v $PWD:/workdir pman0214/alpine-texlive-ja-epspdf
-$ latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex
+docker run --rm -it -v $PWD:/workdir pman0214/alpine-texlive-ja-epspdf 'latexmk -C main.tex && latexmk main.tex'
 ```
 
 ## Contribute
 
-PRs accepted.
+* Bugfix pull requests are welcome.
 
 ## License
 
