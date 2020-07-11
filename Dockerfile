@@ -31,8 +31,9 @@ RUN apk add --no-cache curl perl fontconfig-dev freetype-dev && \
       epstopdf \
       latexmk && \
     rm -fr /tmp/install-tl-unx && \
-    apk del .fetch-deps
+    apk del --purge .fetch-deps && \
+    rm -rf /var/cache/apk && \
+    mkdir /var/cache/apk
 
 WORKDIR /workdir
-
-CMD ["sh"]
+ENTRYPOINT ["/bin/sh", "-c"]
