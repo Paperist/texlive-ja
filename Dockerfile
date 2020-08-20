@@ -36,4 +36,4 @@ RUN apk add --no-cache curl perl fontconfig-dev freetype-dev && \
     mkdir /var/cache/apk
 
 WORKDIR /workdir
-ENTRYPOINT ["/bin/sh", "-c"]
+CMD ["sh"]
