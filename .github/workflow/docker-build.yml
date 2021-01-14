@@ -1,0 +1,25 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+      - 'topix-*'
+      - 'fix-*'
+      - '!*-alpha'
+    paths:
+      - 'Dockerfile'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - 'Dockerfile'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag ebal/texlive-ja-llmk:$(date +%s)
