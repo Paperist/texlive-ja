@@ -1,12 +1,14 @@
-# ebal/texlive-ja-llmk
+# paperist/alpine-texlive-ja
 
-> Minimal TeX Live image for Japanese based on alpine with [llmk](https://github.com/wtsnjp/llmk "GitHub Page")
+[![Docker Automated build](https://img.shields.io/docker/automated/paperist/alpine-texlive-ja.svg)](https://hub.docker.com/r/paperist/alpine-texlive-ja/)
+[![Docker Image Size](https://images.microbadger.com/badges/image/paperist/alpine-texlive-ja.svg)](https://microbadger.com/images/paperist/alpine-texlive-ja "Get your own image badge on microbadger.com")
+[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg)](https://github.com/RichardLitt/standard-readme)
 
-Forked from [Paperist/docker-alpine-texlive-ja] \(under the MIT License\).
+> Minimal TeX Live image for Japanese based on alpine
 
-It can use both of llmk and latexmk.
+Forked from [umireon/docker-texci] \(under the MIT License\).
 
-[Paperist/docker-alpine-texlive-ja]: https://github.com/Paperist/docker-alpine-texlive-ja
+[umireon/docker-texci]: https://github.com/umireon/docker-texci
 
 ## Table of Contents
 
@@ -18,13 +20,14 @@ It can use both of llmk and latexmk.
 ## Install
 
 ```bash
-docker pull ebal/alpine-texlive-ja-llmk
+docker pull paperist/alpine-texlive-ja
 ```
 
 ## Usage
 
 ```bash
-$ docker run --rm -it -v $(pwd):/workdir ebal/alpine-texlive-ja-llmk llmk
+$ docker run --rm -it -v $PWD:/workdir paperist/alpine-texlive-ja
+$ latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex
 ```
 
 ## Contribute
@@ -33,4 +36,7 @@ PRs accepted.
 
 ## License
 
-MIT &copy; ebal5
+MIT © 3846masa
+
+
+
