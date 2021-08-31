@@ -10,7 +10,7 @@ ENV PATH /usr/local/texlive/2020/bin/x86_64-linuxmusl:$PATH
 RUN apk add --no-cache curl perl fontconfig-dev freetype-dev && \
     apk add --no-cache --virtual .fetch-deps xz tar wget && \
     mkdir /tmp/install-tl-unx && \
-    curl -L ftp://tug.org/historic/systems/texlive/2020/install-tl-unx.tar.gz | \
+    curl -L ftp://tug.org/texlive/historic/2020/tlnet-final/install-tl-unx.tar.gz | \
       tar -xz -C /tmp/install-tl-unx --strip-components=1 && \
     printf "%s\n" \
       "selected_scheme scheme-basic" \
@@ -18,7 +18,8 @@ RUN apk add --no-cache curl perl fontconfig-dev freetype-dev && \
       "tlpdbopt_install_srcfiles 0" \
       > /tmp/install-tl-unx/texlive.profile && \
     /tmp/install-tl-unx/install-tl \
-      --profile=/tmp/install-tl-unx/texlive.profile && \
+      --profile=/tmp/install-tl-unx/texlive.profile \
+      --repository ftp://tug.org/texlive/historic/2020/tlnet-final/ && \
     tlmgr install \
       collection-latexextra \
       collection-fontsrecommended \
