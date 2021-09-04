@@ -1,5 +1,7 @@
 name: Build latest
 on:
+  schedule:
+    - cron: '0 22 2 * *'
   push:
     branches:
       - master
