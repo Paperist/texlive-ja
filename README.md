@@ -1,7 +1,5 @@
 # paperist/alpine-texlive-ja
 
-[![Docker Automated build](https://img.shields.io/docker/automated/paperist/alpine-texlive-ja.svg)](https://hub.docker.com/r/paperist/alpine-texlive-ja/)
-[![Docker Image Size](https://images.microbadger.com/badges/image/paperist/alpine-texlive-ja.svg)](https://microbadger.com/images/paperist/alpine-texlive-ja "Get your own image badge on microbadger.com")
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg)](https://github.com/RichardLitt/standard-readme)
 
 > Minimal TeX Live image for Japanese based on alpine
@@ -20,7 +18,14 @@ Forked from [umireon/docker-texci] \(under the MIT License\).
 ## Install
 
 ```bash
-docker pull paperist/alpine-texlive-ja
+# From Docker Hub
+docker pull paperist/alpine-texlive-ja:latest
+```
+
+```bash
+# From GitHub Container Registry
+docker pull ghcr.io/paperist/alpine-texlive-ja:latest
+docker image tag ghcr.io/paperist/alpine-texlive-ja:latest paperist/alpine-texlive-ja:latest
 ```
 
 ## Usage
@@ -37,6 +42,3 @@ PRs accepted.
 ## License
 
 MIT © 3846masa
-
-
-
