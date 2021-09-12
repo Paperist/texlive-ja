@@ -13,7 +13,7 @@ WORKDIR /tmp/install-tl-unx
 COPY texlive.profile ./
 RUN curl -fsSL ftp://tug.org/historic/systems/texlive/2021/install-tl-unx.tar.gz | \
       tar -xz --strip-components=1 && \
-    ./install-tl --profile=./texlive.profile && \
+    ./install-tl --profile=texlive.profile && \
     tlmgr install \
       collection-latexextra \
       collection-fontsrecommended \
