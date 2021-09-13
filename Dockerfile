@@ -3,7 +3,7 @@
 # Released under the MIT license
 # https://opensource.org/licenses/MIT
 
-FROM frolvlad/alpine-glibc:latest
+FROM alpine
 
 ENV PATH /usr/local/texlive/2021/bin/x86_64-linuxmusl:$PATH
 
