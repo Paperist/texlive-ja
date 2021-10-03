@@ -5,9 +5,9 @@
 
 FROM debian:bullseye-slim
 
-ARG TEXBINARCH=aarch64
+ARG ARCH
 
-ENV PATH /usr/local/texlive/2021/bin/${TEXBINARCH}-linux:${PATH}
+ENV PATH /usr/local/texlive/2021/bin/$ARCH-linux:$PATH
 
 RUN apt-get update && apt-get install -y \
   curl \
