@@ -32,7 +32,7 @@ jobs:
         with:
           build-args: ARCH=x86_64
           context: .
-          platform: linux/amd64
+          platforms: linux/amd64
           push: true
           tags: |
             paperist/alpine-texlive-ja:${{ steps.extract_tag_name.outputs.tag }}
@@ -42,7 +42,7 @@ jobs:
         with:
           build-args: ARCH=aarch64
           context: .
-          platform: linux/arm64
+          platforms: linux/arm64
           push: true
           tags: |
             paperist/alpine-texlive-ja:${{ steps.extract_tag_name.outputs.tag }}
