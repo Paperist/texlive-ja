@@ -30,8 +30,7 @@ jobs:
       - name: Build and push (amd64)
         uses: docker/build-push-action@v2
         with:
-          build-arg:
-            - ARCH=x86_64
+          build-args: ARCH=x86_64
           context: .
           platform: linux/amd64
           push: true
@@ -41,8 +40,7 @@ jobs:
       - name: Build and push (arm64)
         uses: docker/build-push-action@v2
         with:
-          build-arg:
-            - ARCH=aarch64
+          build-args: ARCH=aarch64
           context: .
           platform: linux/arm64
           push: true
