@@ -37,7 +37,7 @@ jobs:
           tags: |
             paperist/alpine-texlive-ja:latest
             ghcr.io/paperist/alpine-texlive-ja:latest
-      - name: Build and push
+      - name: Build and push (arm64)
         uses: docker/build-push-action@v2
         with:
           build-arg:
