@@ -3,12 +3,20 @@
 # Released under the MIT license
 # https://opensource.org/licenses/MIT
 
-FROM alpine
+FROM debian:bullseye-slim
 
-ENV PATH /usr/local/texlive/2021/bin/x86_64-linuxmusl:$PATH
+ARG TEXBINARCH=aarch64
 
-RUN apk add --no-cache curl perl fontconfig-dev freetype-dev && \
-    apk add --no-cache --virtual .fetch-deps xz tar wget
+ENV PATH /usr/local/texlive/2021/bin/${TEXBINARCH}-linux:${PATH}
+
+RUN apt-get update && apt-get install -y \
+  curl \
+  libfontconfig1-dev \
+  libfreetype-dev \
+  perl \
+  wget \
+  xz-utils \
+  && rm -rf /var/lib/apt/lists/*
 WORKDIR /tmp/install-tl-unx
 COPY texlive.profile ./
 RUN curl -fsSL ftp://tug.org/historic/systems/texlive/2021/install-tl-unx.tar.gz | \
@@ -19,9 +27,11 @@ RUN curl -fsSL ftp://tug.org/historic/systems/texlive/2021/install-tl-unx.tar.gz
       collection-fontsrecommended \
       collection-langjapanese \
       latexmk && \
-    apk del .fetch-deps
+    apt-get purge -y \
+      wget \
+      xz-utils
 
 WORKDIR /workdir
 RUN rm -fr /tmp/install-tl-unx
 
-CMD ["sh"]
+CMD ["bash"]
