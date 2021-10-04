@@ -27,22 +27,11 @@ jobs:
       - name: Extract tag name
         uses: olegtarasov/get-tag@v2.1
         id: extract_tag_name
-      - name: Build and push (amd64)
+      - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          build-args: ARCH=x86_64
           context: .
-          platforms: linux/amd64
-          push: true
-          tags: |
-            paperist/alpine-texlive-ja:${{ steps.extract_tag_name.outputs.tag }}
-            ghcr.io/paperist/alpine-texlive-ja:${{ steps.extract_tag_name.outputs.tag }}
-      - name: Build and push (arm64)
-        uses: docker/build-push-action@v2
-        with:
-          build-args: ARCH=aarch64
-          context: .
-          platforms: linux/arm64
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: |
             paperist/alpine-texlive-ja:${{ steps.extract_tag_name.outputs.tag }}
