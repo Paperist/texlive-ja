@@ -1,44 +1,37 @@
-# paperist/alpine-texlive-ja
+# paperist/texlive-ja
 
-[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg)](https://github.com/RichardLitt/standard-readme)
-
-> Minimal TeX Live image for Japanese based on alpine
-
-Forked from [umireon/docker-texci] \(under the MIT License\).
-
-[umireon/docker-texci]: https://github.com/umireon/docker-texci
-
-## Table of Contents
-
-- [Install](#install)
-- [Usage](#usage)
-- [Contribute](#contribute)
-- [License](#license)
+Minimal TeX Live image for Japanese
 
 ## Install
 
 ```bash
 # From Docker Hub
-docker pull paperist/alpine-texlive-ja:latest
+docker pull paperist/texlive-ja:alpine
 ```
 
 ```bash
 # From GitHub Container Registry
-docker pull ghcr.io/paperist/alpine-texlive-ja:latest
-docker image tag ghcr.io/paperist/alpine-texlive-ja:latest paperist/alpine-texlive-ja:latest
+docker pull ghcr.io/paperist/texlive-ja:alpine
+docker image tag ghcr.io/paperist/texlive-ja:alpine paperist/texlive-ja:alpine
 ```
 
 ## Usage
 
 ```bash
-$ docker run --rm -it -v $PWD:/workdir paperist/alpine-texlive-ja
+$ docker run --rm -it -v $PWD:/workdir paperist/texlive-ja
 $ latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex
 ```
 
-## Contribute
+## Contributing
 
 PRs accepted.
 
 ## License
 
-MIT © 3846masa
+MIT (c) 3846masa
+
+---
+
+Forked from [umireon/docker-texci] \(under the MIT License\).
+
+[umireon/docker-texci]: https://github.com/umireon/docker-texci
