@@ -13,6 +13,14 @@ jobs:
         uses: ./.github/actions/build/
         with:
           context: ./alpine/
-          push: false
+          load: true
           tags: |
-            paperist/texlive-ja
+            paperist/texlive-ja:alpine
+      - name: Test
+        run: |
+          docker run --rm -v ${PWD}/tests:/workdir paperist/texlive-ja:alpine \
+            sh -c 'latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex';
+      - name: Upload result
+        uses: actions/upload-artifact@v2
+        with:
+          path: ./tests/main.pdf

@@ -4,9 +4,14 @@ inputs:
   context:
     description: Build's context is the set of files located in the specified PATH or URL
     required: true
+  load:
+    description: Load is a shorthand for --output=type=docker
+    required: false
+    default: 'false'
   push:
     description: Push is a shorthand for --output=type=registry
-    required: true
+    required: false
+    default: 'false'
   tags:
     description: List of tags
     required: true
@@ -21,5 +26,6 @@ runs:
       uses: docker/build-push-action@v2
       with:
         context: ${{ inputs.context }}
+        load: ${{ inputs.load }}
         push: ${{ inputs.push }}
         tags: ${{ inputs.tags }}
