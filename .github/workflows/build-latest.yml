@@ -29,8 +29,10 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./alpine/
           push: true
           tags: |
             paperist/alpine-texlive-ja:latest
             ghcr.io/paperist/alpine-texlive-ja:latest
+            paperist/texlive-ja:alpine
+            ghcr.io/paperist/texlive-ja:alpine
