@@ -27,6 +27,7 @@ jobs:
         uses: ./.github/actions/build/
         with:
           context: ./alpine/
+          push: true
           tags: |
             paperist/alpine-texlive-ja:${{ steps.extract_tag_name.outputs.tag }}
             ghcr.io/paperist/alpine-texlive-ja:${{ steps.extract_tag_name.outputs.tag }}

@@ -26,6 +26,7 @@ jobs:
         uses: ./.github/actions/build/
         with:
           context: ./alpine/
+          push: true
           tags: |
             paperist/alpine-texlive-ja:latest
             ghcr.io/paperist/alpine-texlive-ja:latest
