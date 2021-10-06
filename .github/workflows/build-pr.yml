@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  build:
+  build-alpine:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,4 +23,36 @@ jobs:
       - name: Upload result
         uses: actions/upload-artifact@v2
         with:
+          name: alpine
           path: ./tests/main.pdf
+  build-debian:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build Docker image
+        uses: ./.github/actions/build/
+        with:
+          context: ./debian/
+          load: true
+          tags: |
+            paperist/texlive-ja:debian
+      - name: Test
+        run: |
+          docker run --rm -v ${PWD}/tests:/workdir paperist/texlive-ja:debian \
+            sh -c 'latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex';
+      - name: Upload result
+        uses: actions/upload-artifact@v2
+        with:
+          name: debian
+          path: ./tests/main.pdf
+  build-debian-arm64:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build Docker image
+        uses: ./.github/actions/build/
+        with:
+          context: ./debian/
+          platforms: linux/arm64
