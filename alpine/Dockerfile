@@ -33,7 +33,7 @@ RUN apk add --no-cache \
   fontconfig-dev \
   freetype-dev
 
-ENV PATH /usr/local/texlive/bin:$PATH
+ENV PATH /usr/local/texlive/2021/bin/x86_64-linuxmusl:$PATH
 COPY --from=0 /usr/local/texlive /usr/local/texlive
 WORKDIR /workdir
 CMD ["sh"]
