@@ -36,6 +36,7 @@ RUN apt-get update && apt-get install -y \
   libfontconfig1-dev \
   libfreetype-dev \
   perl \
+  wget \
   && rm -rf /var/lib/apt/lists/*
 
 ENV PATH /usr/local/texlive/bin:$PATH

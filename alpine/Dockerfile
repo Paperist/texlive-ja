@@ -31,7 +31,8 @@ FROM alpine
 RUN apk add --no-cache \
   perl \
   fontconfig-dev \
-  freetype-dev
+  freetype-dev \
+  wget
 
 ENV PATH /usr/local/texlive/2021/bin/x86_64-linuxmusl:$PATH
 COPY --from=0 /usr/local/texlive /usr/local/texlive
