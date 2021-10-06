@@ -38,6 +38,7 @@ RUN apt-get update && apt-get install -y \
   perl \
   && rm -rf /var/lib/apt/lists/*
 
+ENV PATH /usr/local/texlive/bin:$PATH
 COPY --from=0 /usr/local/texlive /usr/local/texlive
 WORKDIR /workdir
 
