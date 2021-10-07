@@ -9,7 +9,6 @@ ARG TARGETARCH
 ENV PATH /usr/local/texlive/bin:$PATH
 
 RUN apt-get update && apt-get install -y \
-  curl \
   libfontconfig1-dev \
   libfreetype-dev \
   perl \
@@ -18,7 +17,7 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /install-tl-unx
 COPY texlive.profile ./
-RUN curl -fsSLO ftp://tug.org/historic/systems/texlive/2021/install-tl-unx.tar.gz
+RUN wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 RUN tar -xzf install-tl-unx.tar.gz --strip-components=1
 RUN ./install-tl --profile=texlive.profile
 RUN case $TARGETARCH in \
