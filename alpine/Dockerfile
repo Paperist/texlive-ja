@@ -8,7 +8,6 @@ FROM alpine
 ENV PATH /usr/local/texlive/2021/bin/x86_64-linuxmusl:$PATH
 
 RUN apk add --no-cache \
-  curl \
   fontconfig-dev \
   freetype-dev \
   perl \
@@ -18,7 +17,7 @@ RUN apk add --no-cache \
 
 WORKDIR /install-tl-unx
 COPY texlive.profile ./
-RUN curl -fsSLO ftp://tug.org/historic/systems/texlive/2021/install-tl-unx.tar.gz
+RUN wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 RUN tar -xzf install-tl-unx.tar.gz --strip-components=1
 RUN ./install-tl --profile=texlive.profile
 RUN tlmgr install \
