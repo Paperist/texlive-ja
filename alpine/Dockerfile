@@ -26,7 +26,7 @@ RUN tlmgr install \
       collection-langjapanese \
       latexmk
 
-FROM alpine:3.14.2
+FROM alpine:3.14.1
 RUN apk add --no-cache \
   perl \
   fontconfig-dev \
