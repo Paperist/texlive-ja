@@ -7,21 +7,34 @@ FROM alpine
 
 ENV PATH /usr/local/texlive/2021/bin/x86_64-linuxmusl:$PATH
 
-RUN apk add --no-cache curl perl fontconfig-dev freetype-dev && \
-    apk add --no-cache --virtual .fetch-deps xz tar wget
-WORKDIR /tmp/install-tl-unx
+RUN apk add --no-cache \
+  curl \
+  fontconfig-dev \
+  freetype-dev \
+  perl \
+  tar \
+  wget \
+  xz
+
+WORKDIR /install-tl-unx
 COPY texlive.profile ./
-RUN curl -fsSL ftp://tug.org/historic/systems/texlive/2021/install-tl-unx.tar.gz | \
-      tar -xz --strip-components=1 && \
-    ./install-tl --profile=texlive.profile && \
-    tlmgr install \
+RUN curl -fsSLO ftp://tug.org/historic/systems/texlive/2021/install-tl-unx.tar.gz
+RUN tar -xzf install-tl-unx.tar.gz --strip-components=1
+RUN ./install-tl --profile=texlive.profile
+RUN tlmgr install \
       collection-latexextra \
       collection-fontsrecommended \
       collection-langjapanese \
-      latexmk && \
-    apk del .fetch-deps
+      latexmk
 
+FROM alpine
+RUN apk add --no-cache \
+  perl \
+  fontconfig-dev \
+  freetype-dev \
+  wget
+
+ENV PATH /usr/local/texlive/2021/bin/x86_64-linuxmusl:$PATH
+COPY --from=0 /usr/local/texlive /usr/local/texlive
 WORKDIR /workdir
-RUN rm -fr /tmp/install-tl-unx
-
 CMD ["sh"]
