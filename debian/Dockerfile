@@ -3,7 +3,7 @@
 # Released under the MIT license
 # https://opensource.org/licenses/MIT
 
-FROM debian:bullseye-slim
+FROM debian:11.0-slim
 
 ARG TARGETARCH
 ENV PATH /usr/local/texlive/bin:$PATH
@@ -30,7 +30,7 @@ RUN tlmgr install \
   collection-langjapanese \
   latexmk
 
-FROM debian:bullseye-slim
+FROM debian:11.0-slim
 RUN apt-get update && apt-get install -y \
   libfontconfig1-dev \
   libfreetype-dev \
