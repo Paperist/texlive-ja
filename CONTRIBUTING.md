@@ -4,7 +4,7 @@
 
 https://docs.docker.com/get-docker/
 
-## How to try the image build by Dockerfile locally
+## How to try the image built by Dockerfile locally
 
 This project requires [Buildx](https://docs.docker.com/buildx/working-with-buildx/).
 
