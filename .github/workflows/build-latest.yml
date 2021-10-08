@@ -52,7 +52,7 @@ jobs:
         uses: ./.github/actions/build/
         with:
           context: ./debian/
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           tags: |
             paperist/texlive-ja:latest

@@ -23,6 +23,7 @@ RUN ./install-tl --profile=texlive.profile
 RUN case $TARGETARCH in \
       amd64 ) ln -sf /usr/local/texlive/2021/bin/x86_64-linux /usr/local/texlive/bin ;; \
       arm64 ) ln -sf /usr/local/texlive/2021/bin/aarch64-linux /usr/local/texlive/bin ;; \
+      arm ) ln -sf /usr/local/texlive/2021/bin/armhf-linux /usr/local/texlive/bin ;; \
     esac
 RUN tlmgr install \
   collection-latexextra \
