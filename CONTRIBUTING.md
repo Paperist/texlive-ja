@@ -13,7 +13,7 @@ git clone https://github.com/Paperist/texlive-ja.git
 cd texlive-ja/debian
 # Edit Dockerfile
 docker buildx build . -t texlive-ja:debian
-docker run -it texlive-ja:debian
+docker run -it -v $(pwd):/workdir texlive-ja:debian
 ```
 
 ## How to check if the Dockerfile would build on all the supported platform
