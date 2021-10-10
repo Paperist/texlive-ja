@@ -1,3 +1,10 @@
+queue_rules:
+  - name: default
+    conditions:
+      - check-success=build-alpine
+      - check-success=build-debian
+      - check-success=build-debian-arm64
+
 pull_request_rules:
   - name: automatic merge for Dependabot pull requests
     conditions:
@@ -6,5 +13,6 @@ pull_request_rules:
       - check-success=build-debian
       - check-success=build-debian-arm64
     actions:
-      merge:
+      queue:
         method: merge
+        name: default
