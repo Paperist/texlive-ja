@@ -1,45 +1,34 @@
-# Copyright (c) 2016 Kaito Udagawa
-# Copyright (c) 2016-2020 3846masa
-# Released under the MIT license
-# https://opensource.org/licenses/MIT
-
-FROM debian:11.0-slim
-
-ARG TARGETARCH
-ENV PATH /usr/local/texlive/bin:$PATH
-
-RUN apt-get update && apt-get install -y \
+FROM debian:11.0-slim AS installer
+ENV PATH /usr/local/bin/texlive:$PATH
+WORKDIR /install-tl-unx
+RUN apt-get update
+RUN apt-get install -y \
   libfontconfig1-dev \
   libfreetype-dev \
   perl \
   wget \
   xz-utils
-
-WORKDIR /install-tl-unx
-COPY texlive.profile ./
-RUN wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-RUN tar -xzf install-tl-unx.tar.gz --strip-components=1
+COPY ./texlive.profile ./
+RUN wget -nv https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+RUN tar -xzf ./install-tl-unx.tar.gz --strip-components=1
 RUN ./install-tl --profile=texlive.profile
-RUN case $TARGETARCH in \
-      amd64 ) ln -sf /usr/local/texlive/2021/bin/x86_64-linux /usr/local/texlive/bin ;; \
-      arm64 ) ln -sf /usr/local/texlive/2021/bin/aarch64-linux /usr/local/texlive/bin ;; \
-    esac
+RUN ln -sf /usr/local/texlive/*/bin/* /usr/local/bin/texlive
 RUN tlmgr install \
-  collection-latexextra \
   collection-fontsrecommended \
   collection-langjapanese \
+  collection-latexextra \
   latexmk
 
 FROM debian:11.0-slim
-RUN apt-get update && apt-get install -y \
-  libfontconfig1-dev \
-  libfreetype-dev \
-  perl \
-  wget \
-  && rm -rf /var/lib/apt/lists/*
-
-ENV PATH /usr/local/texlive/bin:$PATH
-COPY --from=0 /usr/local/texlive /usr/local/texlive
+ENV PATH /usr/local/bin/texlive:$PATH
 WORKDIR /workdir
-
+COPY --from=installer /usr/local/texlive /usr/local/texlive
+RUN apt-get update \
+  && apt-get install -y \
+    libfontconfig1-dev \
+    libfreetype-dev \
+    perl \
+    wget \
+  && rm -rf /var/lib/apt/lists/*
+RUN ln -sf /usr/local/texlive/*/bin/* /usr/local/bin/texlive
 CMD ["bash"]
