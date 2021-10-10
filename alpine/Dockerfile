@@ -3,7 +3,7 @@
 # Released under the MIT license
 # https://opensource.org/licenses/MIT
 
-FROM alpine:3.14.1
+FROM alpine:3.14.2
 
 ENV PATH /usr/local/texlive/2021/bin/x86_64-linuxmusl:$PATH
 
@@ -26,7 +26,7 @@ RUN tlmgr install \
       collection-langjapanese \
       latexmk
 
-FROM alpine:3.14.1
+FROM alpine:3.14.2
 RUN apk add --no-cache \
   perl \
   fontconfig-dev \
