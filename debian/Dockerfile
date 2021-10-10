@@ -3,8 +3,6 @@ ENV PATH /usr/local/bin/texlive:$PATH
 WORKDIR /install-tl-unx
 RUN apt-get update
 RUN apt-get install -y \
-  libfontconfig1-dev \
-  libfreetype-dev \
   perl \
   wget \
   xz-utils
@@ -25,8 +23,6 @@ WORKDIR /workdir
 COPY --from=installer /usr/local/texlive /usr/local/texlive
 RUN apt-get update \
   && apt-get install -y \
-    libfontconfig1-dev \
-    libfreetype-dev \
     perl \
     wget \
   && rm -rf /var/lib/apt/lists/*

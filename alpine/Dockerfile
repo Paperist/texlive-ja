@@ -2,8 +2,6 @@ FROM alpine:3.14.2 AS installer
 ENV PATH /usr/local/bin/texlive:$PATH
 WORKDIR /install-tl-unx
 RUN apk add --no-cache \
-  fontconfig-dev \
-  freetype-dev \
   perl \
   tar \
   wget \
@@ -25,8 +23,6 @@ WORKDIR /workdir
 COPY --from=installer /usr/local/texlive /usr/local/texlive
 RUN apk add --no-cache \
   bash \
-  fontconfig-dev \
-  freetype-dev \
   perl \
   wget
 RUN ln -sf /usr/local/texlive/*/bin/* /usr/local/bin/texlive
