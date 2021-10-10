@@ -126,6 +126,10 @@ tlmgr で任意のパッケージをインストールするには、次のよ�
 ```dockerfile
 FROM paperist/texlive-ja:latest
 # XeTeX をインストールする場合の例
+RUN apt-get update \
+  && apt-get install -y \
+    libfontconfig1 \
+  && rm -rf /var/lib/apt/lists/*
 RUN tlmgr install collection-xetex ctex
 ```
 
@@ -135,5 +139,5 @@ $ docker build -t example/texlive-ja:latest .
 
 ```bash
 $ docker run --rm -it -v $PWD:/workdir example/texlive-ja:latest \
-    sh -c 'latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex'
+    sh -c 'xelatex main.tex'
 ```
