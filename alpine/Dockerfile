@@ -1,4 +1,4 @@
-FROM alpine:3.15.0 AS installer
+FROM alpine:3.15.4 AS installer
 ENV PATH /usr/local/bin/texlive:$PATH
 WORKDIR /install-tl-unx
 RUN apk add --no-cache \
@@ -17,7 +17,7 @@ RUN tlmgr install \
   collection-latexextra \
   latexmk
 
-FROM alpine:3.15.0
+FROM alpine:3.15.4
 ENV PATH /usr/local/bin/texlive:$PATH
 WORKDIR /workdir
 COPY --from=installer /usr/local/texlive /usr/local/texlive
