@@ -5,7 +5,8 @@ RUN apk add --no-cache \
   perl \
   tar \
   wget \
-  xz
+  xz \
+  fontconfig
 COPY ./texlive.profile ./
 RUN wget -nv https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 RUN tar -xzf ./install-tl-unx.tar.gz --strip-components=1
