@@ -3,6 +3,8 @@
 The minimal TeXLive Docker image for Japanese <br/>
 コンパクトな日本語向け TeXLive Docker イメージ
 
+[![github sponsors](https://flat.badgen.net/badge/GitHub%20Sponsors/Support%20me%20%E2%9D%A4/ff69b4?icon=github)](https://github.com/sponsors/3846masa)
+
 ![size:alpine](https://flat.badgen.net/docker/size/paperist/texlive-ja/alpine/amd64?label=paperist/texlive-ja:alpine&icon=docker)
 ![size:debian](https://flat.badgen.net/docker/size/paperist/texlive-ja/debian/amd64?label=paperist/texlive-ja:debian&icon=docker)
 ![size:debian:arm64](https://flat.badgen.net/docker/size/paperist/texlive-ja/debian/arm64?label=paperist/texlive-ja:debian+|+ARM64&icon=docker)
