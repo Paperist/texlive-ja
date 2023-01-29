@@ -18,7 +18,7 @@ RUN tlmgr install \
   collection-latexextra \
   latexmk
 
-FROM debian:11.6-slim
+FROM node:14-buster-slim
 ENV PATH /usr/local/bin/texlive:$PATH
 WORKDIR /workdir
 COPY --from=installer /usr/local/texlive /usr/local/texlive
@@ -28,4 +28,11 @@ RUN apt-get update \
     wget \
   && rm -rf /var/lib/apt/lists/*
 RUN ln -sf /usr/local/texlive/*/bin/* /usr/local/bin/texlive
+
+WORKDIR /npm
+COPY ["package.json", "package-lock.json", "/npm"]
+RUN npm install /npm
+ENV PATH=/npm/node_modules/.bin:$PATH
+
+WORKDIR /workdir
 CMD ["bash"]
