@@ -19,20 +19,18 @@ RUN tlmgr install \
   latexmk
 
 FROM alpine:3.17.1
-ENV PATH /usr/local/bin/texlive:$PATH
-WORKDIR /workdir
+ENV PATH /usr/local/bin/texlive:/npm/node_modules/.bin:$PATH
 COPY --from=installer /usr/local/texlive /usr/local/texlive
 RUN apk add --no-cache \
-  bash \
-  perl \
-  wget
+      perl \
+      wget \
+      bash
 RUN ln -sf /usr/local/texlive/*/bin/* /usr/local/bin/texlive
 
 WORKDIR /npm
 COPY ["package.json", "package-lock.json", "/npm"]
 RUN apk add --no-cache npm &&\
     npm install /npm
-ENV PATH=/npm/node_modules/.bin:$PATH
 
 WORKDIR /workdir
 CMD ["bash"]

@@ -19,20 +19,19 @@ RUN tlmgr install \
   latexmk
 
 FROM node:14-buster-slim
-ENV PATH /usr/local/bin/texlive:$PATH
-WORKDIR /workdir
+ENV PATH /usr/local/bin/texlive:/npm/node_modules/.bin:$PATH
 COPY --from=installer /usr/local/texlive /usr/local/texlive
-RUN apt-get update \
-  && apt-get install -y \
-    perl \
-    wget \
-  && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y \
+      perl \
+      wget \
+    && rm -rf /var/lib/apt/lists/*
 RUN ln -sf /usr/local/texlive/*/bin/* /usr/local/bin/texlive
 
 WORKDIR /npm
 COPY ["package.json", "package-lock.json", "/npm"]
-RUN npm install /npm
-ENV PATH=/npm/node_modules/.bin:$PATH
+RUN \
+    npm install /npm
 
 WORKDIR /workdir
 CMD ["bash"]
