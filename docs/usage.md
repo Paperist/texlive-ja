@@ -12,7 +12,7 @@ This article is in Japanese only.
 
 ## latexmk を使う
 
-paperist/texlive-ja には、latexmk がインストールされています
+smkwlab/texive-ja-textlint には、latexmk と textlint がインストールされています
 
 例えば、upLaTeX でビルドしたい場合、次のように `latexmkrc` ファイルを作ると、`latexmk` コマンドだけでビルドできます
 
@@ -26,20 +26,20 @@ $pdf_mode = 3;
 ```
 
 ```bash
-$ docker run --rm -it -v $PWD:/workdir paperist/texlive-ja:latest \
+$ docker run --rm -it -v $PWD:/workdir ghcr.io/smkwlab/texive-ja-textlint:latest \
     sh -c 'latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex'
 ```
 
 ## VSCode LaTeX Workshop で使う
 
-paperist/texlive-ja は、[LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) で使えます
+smkwlab/texive-ja-textlint は、[LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) で使えます
 
 「latexmk を使う」を参考に `latexmkrc` を用意したあと、次のように VSCode の設定を書き換えます
 
 ```json
 {
   "latex-workshop.docker.enabled": true,
-  "latex-workshop.docker.image.latex": "paperist/texlive-ja:latest",
+  "latex-workshop.docker.image.latex": "smkwlab/texive-ja-textlint:latest",
   "latex-workshop.latex.tools": [
     {
       "name": "latexmk",
@@ -117,14 +117,14 @@ $ wget https://github.com/zr-tex8r/PXchfon-extras/raw/master/pxchfon-extras.def
 
 ## イメージを拡張する
 
-paperist/texlive-ja には、最小限のパッケージしかインストールされていません
+smkwlab/texive-ja-textlint には、最小限のパッケージしかインストールされていません
 
-もし、paperist/texlive-ja 内臓のパッケージだけでは足りない場合、自分で Docker イメージを拡張できます
+もし、smkwlab/texive-ja-textlint 内臓のパッケージだけでは足りない場合、自分で Docker イメージを拡張できます
 
 tlmgr で任意のパッケージをインストールするには、次のように Dockerfile を作成して、任意のイメージ名でビルドします
 
 ```dockerfile
-FROM paperist/texlive-ja:latest
+FROM smkwlab/texive-ja-textlint:latest
 # XeTeX をインストールする場合の例
 RUN apt-get update \
   && apt-get install -y \
