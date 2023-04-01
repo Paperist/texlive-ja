@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
       - name: Build Docker image
         uses: ./.github/actions/build/
         with:
@@ -21,7 +21,7 @@ jobs:
           docker run --rm -v ${PWD}/tests:/workdir paperist/texlive-ja:alpine \
             sh -c 'latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex';
       - name: Upload result
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3.1.2
         with:
           name: alpine
           path: ./tests/main.pdf
@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
       - name: Build Docker image
         uses: ./.github/actions/build/
         with:
@@ -42,7 +42,7 @@ jobs:
           docker run --rm -v ${PWD}/tests:/workdir paperist/texlive-ja:debian \
             sh -c 'latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex';
       - name: Upload result
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3.1.2
         with:
           name: debian
           path: ./tests/main.pdf
@@ -50,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
       - name: Build Docker image
         uses: ./.github/actions/build/
         with:

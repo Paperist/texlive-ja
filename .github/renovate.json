@@ -1,0 +1,30 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "dependencyDashboard": true,
+  "dependencyDashboardLabels": ["dependencies"],
+  "extends": ["workarounds:all"],
+  "packageRules": [
+    {
+      "automerge": true,
+      "labels": ["dependencies"],
+      "matchPackagePatterns": ["*"],
+      "rangeStrategy": "bump",
+      "reviewers": ["3846masa"],
+      "schedule": ["after 8:00 pm"],
+      "semanticCommitType": "chore",
+      "semanticCommits": "enabled"
+    },
+    {
+      "automerge": true,
+      "matchManagers": ["github-actions"],
+      "pinDigests": true
+    },
+    {
+      "automerge": true,
+      "matchManagers": ["dockerfile"],
+      "pinDigests": true
+    }
+  ],
+  "printConfig": true,
+  "timezone": "Asia/Tokyo"
+}

@@ -8,17 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Extract tag name
-        uses: olegtarasov/get-tag@v2.1
-        id: extract_tag_name
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
       - name: Login to DockerHub
-        uses: docker/login-action@v1
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a # v2.1.0
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a # v2.1.0
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -29,25 +26,22 @@ jobs:
           context: ./alpine/
           push: true
           tags: |
-            paperist/alpine-texlive-ja:${{ steps.extract_tag_name.outputs.tag }}
-            ghcr.io/paperist/alpine-texlive-ja:${{ steps.extract_tag_name.outputs.tag }}
-            paperist/texlive-ja:${{ steps.extract_tag_name.outputs.tag }}-alpine
-            ghcr.io/paperist/texlive-ja:${{ steps.extract_tag_name.outputs.tag }}-alpine
+            paperist/alpine-texlive-ja:${{ github.ref_name }}
+            ghcr.io/paperist/alpine-texlive-ja:${{ github.ref_name }}
+            paperist/texlive-ja:${{ github.ref_name }}-alpine
+            ghcr.io/paperist/texlive-ja:${{ github.ref_name }}-alpine
   build-debian:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Extract tag name
-        uses: olegtarasov/get-tag@v2.1
-        id: extract_tag_name
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
       - name: Login to DockerHub
-        uses: docker/login-action@v1
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a # v2.1.0
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a # v2.1.0
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -59,5 +53,5 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            paperist/texlive-ja:${{ steps.extract_tag_name.outputs.tag }}-debian
-            ghcr.io/paperist/texlive-ja:${{ steps.extract_tag_name.outputs.tag }}-debian
+            paperist/texlive-ja:${{ github.ref_name }}-debian
+            ghcr.io/paperist/texlive-ja:${{ github.ref_name }}-debian
