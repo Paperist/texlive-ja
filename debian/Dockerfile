@@ -1,4 +1,4 @@
-FROM debian:12.4-slim@sha256:f80c45482c8d147da87613cb6878a7238b8642bcc24fc11bad78c7bec726f340 AS installer
+FROM debian:12.4-slim@sha256:f4a83aa865a2b4a064ff142aa91c713180df9fcb86ce676b5de2981029379c37 AS installer
 ENV PATH /usr/local/bin/texlive:$PATH
 WORKDIR /install-tl-unx
 RUN apt-get update
@@ -18,7 +18,7 @@ RUN tlmgr install \
   collection-latexextra \
   latexmk
 
-FROM debian:12.4-slim@sha256:f80c45482c8d147da87613cb6878a7238b8642bcc24fc11bad78c7bec726f340
+FROM debian:12.4-slim@sha256:f4a83aa865a2b4a064ff142aa91c713180df9fcb86ce676b5de2981029379c37
 ENV PATH /usr/local/bin/texlive:$PATH
 WORKDIR /workdir
 COPY --from=installer /usr/local/texlive /usr/local/texlive
