@@ -21,7 +21,7 @@ jobs:
           docker run --rm -v ${PWD}/tests:/workdir paperist/texlive-ja:alpine \
             sh -c 'latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex';
       - name: Upload result
-        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4.3.1
+        uses: actions/upload-artifact@1746f4ab65b179e0ea60a494b83293b640dd5bba # v4.3.2
         with:
           name: alpine
           path: ./tests/main.pdf
@@ -42,7 +42,7 @@ jobs:
           docker run --rm -v ${PWD}/tests:/workdir paperist/texlive-ja:debian \
             sh -c 'latexmk -C main.tex && latexmk main.tex && latexmk -c main.tex';
       - name: Upload result
-        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4.3.1
+        uses: actions/upload-artifact@1746f4ab65b179e0ea60a494b83293b640dd5bba # v4.3.2
         with:
           name: debian
           path: ./tests/main.pdf
