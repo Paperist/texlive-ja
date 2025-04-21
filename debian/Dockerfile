@@ -8,9 +8,10 @@ RUN apt-get install -y \
   xz-utils \
   fontconfig
 COPY ./texlive.profile ./
-RUN wget -nv https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+RUN wget -nv ftp://tug.org/texlive/historic/2024/tlnet-final/install-tl-unx.tar.gz
 RUN tar -xzf ./install-tl-unx.tar.gz --strip-components=1
-RUN ./install-tl --profile=texlive.profile
+RUN ./install-tl --profile=texlive.profile \
+  --repository ftp://tug.org/texlive/historic/2024/tlnet-final/
 RUN ln -sf /usr/local/texlive/*/bin/* /usr/local/bin/texlive
 RUN tlmgr install \
   collection-fontsrecommended \
