@@ -12,8 +12,8 @@ The minimal TeXLive Docker image for Japanese <br/>
 ## Supported tags / タグ一覧
 
 - [`alpine`](./alpine/Dockerfile)
-  - Only AMD64 supported.
-  - AMD64 のみ対応しています
+  - AMD64, ARM64 supported.
+  - AMD64, ARM64 (M1 mac) に対応しています
 - [`latest`](./debian/Dockerfile), [`debian`](./debian/Dockerfile)
   - AMD64, ARM64 supported.
   - AMD64, ARM64 (M1 mac) に対応しています
